@@ -1,4 +1,4 @@
-
+package Servicios;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,13 +8,15 @@ import java.sql.Statement;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
+import DTO.PatologiaDTO;
+
 public class Principal {
 	
-	private final static String S_PATH_FILE_PRIVATE_KEY = "/Users/nirabethencourt/id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
-	private final static String S_PATH_FILE_KNOWN_HOSTS = "/Users/nirabethencourt/known_hosts";
+	private final static String S_PATH_FILE_PRIVATE_KEY = "C:\\Users\\Nira\\git\\ProyectoWeb\\id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
+	private final static String S_PATH_FILE_KNOWN_HOSTS = "C:\\Users\\Nira\\git\\ProyectoWeb\\known_hosts";
 	private final static String S_PASS_PHRASE = "mypassphrase";
-	private final static int LOCAl_PORT = 3309; 
-	private final static int REMOTE_PORT = 3308; 
+	private final static int LOCAl_PORT = 3308; 
+	private final static int REMOTE_PORT = 3306; 
 	private final static int SSH_REMOTE_PORT = 22; 
 	private final static String SSH_USER = "587fca0889f5cf057100004b";
 	private final static String SSH_REMOTE_SERVER = "femxa-ebtm.rhcloud.com";
