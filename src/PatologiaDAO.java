@@ -58,8 +58,8 @@ public class PatologiaDAO {
 		{
 			conectate_A_SSH();
 			
-			DriverManager.registerDriver (new com.mysql.cj.jdbc.Driver());// método equivalente al anterior
-			//Sea como sea, es, <<oye, si te piden una conexión, se la pides a esa clase!>>
+			DriverManager.registerDriver (new com.mysql.cj.jdbc.Driver());// mï¿½todo equivalente al anterior
+			//Sea como sea, es, <<oye, si te piden una conexiï¿½n, se la pides a esa clase!>>
 			conn = DriverManager.getConnection (cadena_conexion, user, password);
   	        stmt = conn.createStatement();
   	        
@@ -70,13 +70,13 @@ public class PatologiaDAO {
   	        
   	        long tiempo_inicial = System.currentTimeMillis();
   	        
-  	        pato = PatologiaDAO.buscarPatologiaID(id, conn, stmt);
+//  	        pato = PatologiaDAO.buscarPatologiaID(id, conn, stmt);
   
   	        System.out.println(pato.getNombre());
   	        
   	        long tiempo_final = System.currentTimeMillis();
   	        double milisegundos = (tiempo_final - tiempo_inicial);
-  	        System.out.println("Tardó " + milisegundos + " milisegundos");
+  	        System.out.println("Tardï¿½ " + milisegundos + " milisegundos");
 			
 		}
 		catch(Exception e)
@@ -97,12 +97,12 @@ public class PatologiaDAO {
 	
 
 	
-	public static PatologiaDTO buscarPatologiaID(int id, Connection conn, Statement stmt) throws SQLException
-	{
-		PatologiaDTO patologia = new PatologiaDTO ();
-		
-		
-	}
+//	public static PatologiaDTO buscarPatologiaID(int id, Connection conn, Statement stmt) throws SQLException
+//	{
+////		PatologiaDTO patologia = new PatologiaDTO(id);
+//		
+//		
+//	}
 	public static List<Sintoma> buscarSintomasPatologiaID (int id, Connection conn) throws SQLException
 	{
 		List<Sintoma> lista_sintomas = new ArrayList<Sintoma>();
