@@ -10,21 +10,21 @@ import com.jcraft.jsch.Session;
 
 public class Principal {
 	
-	private final static String S_PATH_FILE_PRIVATE_KEY = "id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
-	private final static String S_PATH_FILE_KNOWN_HOSTS = "known_hosts";
+	private final static String S_PATH_FILE_PRIVATE_KEY = "/Users/nirabethencourt/id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
+	private final static String S_PATH_FILE_KNOWN_HOSTS = "/Users/nirabethencourt/known_hosts";
 	private final static String S_PASS_PHRASE = "mypassphrase";
 	private final static int LOCAl_PORT = 3309; 
-	private final static int REMOTE_PORT = 3306; 
+	private final static int REMOTE_PORT = 3308; 
 	private final static int SSH_REMOTE_PORT = 22; 
 	private final static String SSH_USER = "587fca0889f5cf057100004b";
 	private final static String SSH_REMOTE_SERVER = "femxa-ebtm.rhcloud.com";
 	private final static String MYSQL_REMOTE_SERVER = "127.11.220.2";
 	private static Session sesion; //represents each ssh session
-	private final static String cadena_conexion = "jdbc:mysql://localhost:3309/femxa";
+	private final static String cadena_conexion = "jdbc:mysql://localhost:3308/femxa";
 	private final static String user = "adminGXjlxzG";
 	private final static String password = "QBShkFDW_69e";
 	
-	private static void conectate_A_SSH () throws Throwable
+	public static void conectate_A_SSH () throws Throwable
 	{
 		JSch jsch = new JSch();
         jsch.setKnownHosts(S_PATH_FILE_KNOWN_HOSTS);
@@ -39,7 +39,7 @@ public class Principal {
 
 	}
 	
-	private static void desconectate_D_SSH ()
+	public static void desconectate_D_SSH ()
 	{
 		sesion.disconnect();
 	}
@@ -70,7 +70,7 @@ public class Principal {
   	        
 //  	        pato = PatologiaDAO.buscarPatologiaID(id, conn, stmt);
   
-  	        System.out.println(pato.getNombre());
+  	       // System.out.println(pato.getNombre());
   	        
   	        long tiempo_final = System.currentTimeMillis();
   	        double milisegundos = (tiempo_final - tiempo_inicial);

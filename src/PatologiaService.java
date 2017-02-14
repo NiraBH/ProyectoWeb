@@ -1,25 +1,20 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 
 public class PatologiaService {
-
-		public static PatologiaDTO buscarPatologiaID(int id) throws SQLException
-		{
-			return null;
 	
-			
-			
-		}
+	public PatologiaDTO buscarPatologiaPorID (int id)
+	{
+		PatologiaDTO pato = null;
+		PatologiaDAO pdao = new PatologiaDAO();
 		
-		public PatologiaDTO buscarPatologiaPorNombre (String nombre_patologia){
-			return null;
-			
-			
-		}
+			pato = pdao.getPalogiaPorID(id);
 		
+		return pato;
+	}
 	
+	public PatologiaDTO buscarPatologiaPorNombre (String nombre)
+	{
+		return null;
 	}
 
-
+}
