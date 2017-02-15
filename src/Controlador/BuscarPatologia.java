@@ -48,7 +48,7 @@ public class BuscarPatologia extends HttpServlet {
   	    }
 		PrintWriter pw = response.getWriter().append(hm.get(idnuevo).toString());
 		
-
+    }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -65,7 +65,7 @@ public class BuscarPatologia extends HttpServlet {
 		this.lista_patologias = new ArrayList<PatologiaDTO>();
 		
 		try {
-			this.lista_patologias = ps.buscarPatologiaPorID(1);
+			PatologiaDTO patologiadto = ps.buscarPatologiaPorID(1);
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
