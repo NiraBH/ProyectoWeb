@@ -76,7 +76,7 @@ body{direction:rtl;
     <center><table class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src="img/glaucoma-test1.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="250">DESCRIPCION<br> $(patologia.descripcion)</td>
+        <td><img src="img/glaucoma-test1.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="250">DESCRIPCION <br>${patologia.descripcion}</td>
     
    
    </tr>

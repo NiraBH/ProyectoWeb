@@ -39,7 +39,7 @@ public class BuscarPatologia extends HttpServlet {
 		int id = Integer.parseInt(str_id);
 		
 		PatologiaDTO patoDto = ps.buscarPatologiaPorID(id);
-		PrintWriter pw = response.getWriter().append(patoDto.getNombre()+ ": " + patoDto.getDescripcion());
+		//PrintWriter pw = response.getWriter().append(patoDto.getNombre()+ ": " + patoDto.getDescripcion());
 	
 		time_end = System.currentTimeMillis();
 		System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
@@ -82,8 +82,7 @@ public class BuscarPatologia extends HttpServlet {
 		case 9: 
 			request.getRequestDispatcher(".//html//presbicia.jsp").forward(request, response);
 			break;
-			
-
+						
 		default:
 			request.getRequestDispatcher(".//html//patologias.html").forward(request, response);
 			break;
