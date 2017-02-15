@@ -1,11 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>MIRATE_EL_OJO</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="..\img\logoico.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="../img/logoico.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -22,7 +24,7 @@
     }
 H1{size:4 color:pink}
 body{direction:rtl;
-     background-image: url(../img/fondo.jpg);
+     background-image: url(fondo.jpg);
      background-color: rgb(255, 255, 255);
      background-attachment: fixed;
      background-repeat: repeat-x;
@@ -34,8 +36,8 @@ body{direction:rtl;
     font-size:16px}
   </style>
 </head>
-<body  background="..\img\fondo.jpg"  width="1500" heigth="1500">
-  
+<body  background="fondo.jpg"  width="1500" heigth="1500">
+    
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -44,7 +46,7 @@ body{direction:rtl;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo"> <img src="..\img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -58,51 +60,50 @@ body{direction:rtl;
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
     </div>
   </div>
 </nav>
-<br><br>
-
-
-<div class="container">
-  <CENTER ><h2>CATARATAS</h2>
-            
-    <center><table class="table table-bordered">
-    <tbody>
-    <tr>
-        <td><img src= "..\img\catarata-ojos.jpg" class="img-rounded" alt="Cinque Terre" width="404" height="300">DESCRIPCION</td>
     
+    
+     
+    <center>
    
-   </tr>
-    </tbody>
-        <tbody>
-      <tr>
-     
-        <td><center>CAUSAS</center></td>
-      </tr>
-      <tr>
-          <td><center>TRATAMIENTO</center></td>
-        
-       
-      </tr>
-      <tr>
-        <td><center>SINTOMAS</center></td>
-     
-        
-      </tr>
-    </tbody>
-  </table></center>
-    </CENTER>
-    </div>
 
+ <footer class="container-fluid text-center">
+  <p class="fuente">BUSQUEDA</p>
+</footer>
 
+         <br><br>
+   <br><br>
+   <br><br>
+   
+         <form>
+  
+             <div class="container">
+	<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control"  placeholder="                                           ?QUE QUIERES BUSCAR¿" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+        </form>
+    </center>
+    </body>
     
-
-
-
-</body>
+        
+    
+             
 </html>

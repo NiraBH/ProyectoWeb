@@ -1,11 +1,8 @@
 package Controlador;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +18,6 @@ import Servicios.PatologiaService;
 @WebServlet("/BuscarPatologia")
 public class BuscarPatologia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<PatologiaDTO> lista_patologias;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,21 +30,67 @@ public class BuscarPatologia extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
-		
-		int idnuevo = Integer.parseInt(id); 
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		PatologiaService ps = new PatologiaService();
-		HashMap<Integer, PatologiaDTO> hm = new HashMap<Integer, PatologiaDTO>();
+		long time_start, time_end;
+		time_start = System.currentTimeMillis();
+		String str_id = request.getParameter("id");
+		int id = Integer.parseInt(str_id);
 		
-		for (PatologiaDTO patologia : lista_patologias) {
- 	    	hm.put(patologia.getId(), patologia);
-  	    }
-		PrintWriter pw = response.getWriter().append(hm.get(idnuevo).toString());
+		PatologiaDTO patoDto = ps.buscarPatologiaPorID(id);
+		PrintWriter pw = response.getWriter().append(patoDto.getNombre()+ ": " + patoDto.getDescripcion());
+	
+		time_end = System.currentTimeMillis();
+		System.out.println("the task has taken "+ ( time_end - time_start ) +" milliseconds");
 		
-    }
+		
+		request.setAttribute("patologia", patoDto);
+		
+		switch (id) {
+		case 1:
+			request.getRequestDispatcher(".//html//queratocono.jsp").forward(request, response);
+			
+			break;
+		case 2:
+			request.getRequestDispatcher(".//html//glaucoma.jsp").forward(request, response);
+			
+			break;
+			
+		case 4:
+			request.getRequestDispatcher(".//html//catarata.jsp").forward(request, response);
+			break;
+		
+		case 5:
+			
+			request.getRequestDispatcher(".//html//conjuntivitis.jsp").forward(request, response);
+			
+			break;
+			
+		case 6: 
+			request.getRequestDispatcher(".//html//desprendimiento.jsp").forward(request, response);
+			break;
+			
+		case 7:
+			request.getRequestDispatcher(".//html//acromatopsia.jsp").forward(request, response);
+			break;
+			
+		case 8:
+			request.getRequestDispatcher(".//html//estrabismo.jsp").forward(request, response);
+			break;
+		
+		case 9: 
+			request.getRequestDispatcher(".//html//presbicia.jsp").forward(request, response);
+			break;
+			
+
+		default:
+			request.getRequestDispatcher(".//html//patologias.html").forward(request, response);
+			break;
+		}
+		
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -57,19 +99,4 @@ public class BuscarPatologia extends HttpServlet {
 		doGet(request, response);
 	}
 
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-		PatologiaService ps = new PatologiaService();
-		this.lista_patologias = new ArrayList<PatologiaDTO>();
-		
-		try {
-			PatologiaDTO patologiadto = ps.buscarPatologiaPorID(1);
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 }

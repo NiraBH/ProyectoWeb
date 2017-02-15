@@ -5,11 +5,14 @@ import DTO.PatologiaDTO;
 
 public class PatologiaService {
 
+	
 	public PatologiaDTO buscarPatologiaPorID (int id)
 	{
+		PatologiaDTO pdto = null;
 		PatologiaDAO pdao = new PatologiaDAO();
-		PatologiaDTO dto = pdao.buscarPorId(id);
 		
-		return dto;
+			pdto = pdao.buscarPorId(id);
+		
+		return pdto;
 	}
 }
