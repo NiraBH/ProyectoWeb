@@ -52,9 +52,9 @@ body{direction:rtl;
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="#">
-            <a href="home.html">Inicio</a></li>
-        <li><a href="patologias.html">Patologias</a></li>
-        <li><a href="test.html">Test</a></li>
+            <a href="html/home.html">Inicio</a></li>
+        <li><a href="html/patologias.html">Patologias</a></li>
+        <li><a href="html/test.html">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

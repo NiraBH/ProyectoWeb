@@ -75,6 +75,7 @@ public class BuscarPatologia extends HttpServlet {
 			request.getRequestDispatcher(".//html//acromatopsia.jsp").forward(request, response);
 			break;
 			
+			
 		case 8:
 			request.getRequestDispatcher(".//html//estrabismo.jsp").forward(request, response);
 			break;
@@ -84,7 +85,7 @@ public class BuscarPatologia extends HttpServlet {
 			break;
 						
 		default:
-			request.getRequestDispatcher(".//html//patologias.html").forward(request, response);
+			response.sendRedirect("html/patologias.html");
 			break;
 		}
 		
