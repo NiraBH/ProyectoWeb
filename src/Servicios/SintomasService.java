@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DAO.SintomasDAO;
-import DTO.SintomasDTO;
+import DTO.SintomaDTO;
+
 
 public class SintomasService {
 
-	public List<SintomasDTO>  buscarSintomasPorInicial (String inicial) throws SQLException
+	public List<SintomaDTO>  buscarSintomasPorInicial (String inicial) throws SQLException
 	{
-		List<SintomasDTO> lista_sintomas= null;
+		List<SintomaDTO> lista_sintomas= null;
 		
 		lista_sintomas = SintomasDAO.getSintomasPorInicial(inicial);
 		

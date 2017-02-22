@@ -1,16 +1,20 @@
 package Controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.List;
-
+import java.lang.reflect.Type;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DTO.SintomasDTO;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import DTO.SintomaDTO;
 import Servicios.SintomasService;
 
 /**
@@ -37,14 +41,20 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 		
 		try {
 			String valorSintoma = request.getParameter("sintomaBuscado");
-			List<SintomasDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
+			List<SintomaDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
 			
 			
-			for(SintomasDTO sintoma: lista_sintomaDTO)
+			for(SintomaDTO sintoma: lista_sintomaDTO)
 			{
 				valorSintoma = sintoma.getDescripcion();
 				System.out.println(valorSintoma);
 			}
+			
+			Gson gson = new Gson();
+			Type tipoListaSintomas = new TypeToken<List<SintomaDTO>>(){}.getType();
+			String s = gson.toJson(lista_sintomaDTO, tipoListaSintomas);
+			System.out.println(s);
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
