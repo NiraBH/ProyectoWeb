@@ -1,10 +1,14 @@
 package Controlador;
 
-import java.io.IOException;
 
-import java.sql.SQLException;
-import java.util.List;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 
 import DTO.SintomaDTO;
 import Servicios.SintomasService;
+
 
 /**
  * Servlet implementation class BuscarSintomasPorInicial
@@ -36,29 +41,35 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String inicial = request.getParameter("intro");
 		SintomasService ss = new SintomasService();
-		
-		
+		List<SintomaDTO> lista_sintomas = null;
 		try {
-			String valorSintoma = request.getParameter("sintomaBuscado");
-			List<SintomaDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
-			
-			
-			for(SintomaDTO sintoma: lista_sintomaDTO)
-			{
-				valorSintoma = sintoma.getDescripcion();
-				System.out.println(valorSintoma);
-			}
-			
-			Gson gson = new Gson();
-			Type tipoListaSintomas = new TypeToken<List<SintomaDTO>>(){}.getType();
-			String s = gson.toJson(lista_sintomaDTO, tipoListaSintomas);
-			System.out.println(s);
-			 
+			lista_sintomas = ss.buscarSintomasPorInicial(inicial);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//lista_sintomas = (ArrayList<String>) sintomas_service.buscarSintomaPorInicial(valorSintoma);
+		
+		/*
+		for (SintomaDTO sintoma : lista_sintomas) {
+			System.out.println(sintoma);
+		}
+		*/
+		Gson gson = new Gson();
+		Type tipoListaSintomas = new TypeToken<List<SintomaDTO>>(){}.getType();
+		String s = gson.toJson(lista_sintomas, tipoListaSintomas);
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(s);
+		
+		
+		
+		
+		
+		
 		
 	}
 
