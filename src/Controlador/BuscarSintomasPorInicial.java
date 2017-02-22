@@ -20,13 +20,13 @@ import Servicios.SintomaService;
  * Servlet implementation class BuscarSintomasPorInicial
  */
 @WebServlet("/BuscarSintomasPorInicial")
-public class buscarSintomasPorInicial extends HttpServlet {
+public class BuscarSintomasPorInicial extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public buscarSintomasPorInicial() {
+    public BuscarSintomasPorInicial() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class buscarSintomasPorInicial extends HttpServlet {
 		
 		
 		try {
-			String valorSintoma = request.getParameter("sintomaBuscado");
+			String valorSintoma = request.getParameter("sintoma");
 			List<SintomaDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
 			
 			
