@@ -10,11 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import DTO.SintomaDTO;
-import Servicios.SintomaService;
-
+import DTO.SintomasDTO;
+import Servicios.SintomasService;
 
 /**
  * Servlet implementation class BuscarSintomasPorInicial
@@ -35,15 +32,15 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SintomaService ss = new SintomaService();
+		SintomasService ss = new SintomasService();
 		
 		
 		try {
-			String valorSintoma = request.getParameter("sintoma");
-			List<SintomaDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
+			String valorSintoma = request.getParameter("sintomaBuscado");
+			List<SintomasDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
 			
 			
-			for(SintomaDTO sintoma: lista_sintomaDTO)
+			for(SintomasDTO sintoma: lista_sintomaDTO)
 			{
 				valorSintoma = sintoma.getDescripcion();
 				System.out.println(valorSintoma);
