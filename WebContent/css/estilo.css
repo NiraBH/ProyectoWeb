@@ -7,7 +7,7 @@ li {
 li:HOVER
 {
 	cursor: pointer;
-	background-color: gray;
+	background-color: skyblue;
 }
 
 ul {
@@ -15,10 +15,11 @@ ul {
 	-webkit-padding-start: 2px; 
 }
 
-#divmain input {
-	width: 150px;
-}
+/*)#divmain input {
+	width: 800px;
+*/
 
-#lista ul li {
-	width: 150px;
+/*#lista ul li {
+	width: 400px;
+	*/
 }

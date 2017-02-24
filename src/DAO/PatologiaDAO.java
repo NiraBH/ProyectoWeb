@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
+
 
 
 public class PatologiaDAO {
@@ -16,7 +18,8 @@ public class PatologiaDAO {
 	public static final String LISTAR_PATOLOGIAS
 	= "SELECT nom_patol From Patologias Where id_patol IN (Select id_patol From Patologias Where id_patol)";
 	
-
+	private final static Logger log = Logger.getLogger("mylog");
+	
 	public PatologiaDTO buscarPorId (int id)
 	{
 		PatologiaDTO pdto = null;
@@ -31,22 +34,31 @@ public class PatologiaDAO {
 			while (rs.next())
 		    {
 				pdto = new PatologiaDTO(rs.getInt(1), rs.getNString(2), rs.getString(5), rs.getString(4), rs.getNString(3), getSintomasPorPatologiaID(con, rs.getInt(1)));
+				
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+			
+			
+		} 
+		
+		catch (SQLException e) {
+			
 			e.printStackTrace();
 		}
 		finally
 		{
 			Pool.liberarRecursos(con, st, rs);
 		}
+		
+		
 		return pdto;
 	}
+	
 	
 	public static List<SintomaDTO> getSintomasPorPatologiaID (Connection conn, int id) throws SQLException
 	{
 		List<SintomaDTO> lista_sintomas = new ArrayList<SintomaDTO>();
-			
+			 
 			String descripcion_sintoma = null;
 			int id_sintoma = 0;
 			SintomaDTO sintoma = null;
@@ -61,6 +73,9 @@ public class PatologiaDAO {
 				sintoma = new SintomaDTO(id_sintoma, descripcion_sintoma);
 				lista_sintomas.add(sintoma);
 			}
+			
+			
+			
 			if (rset2 != null) 	{ try { rset2.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 			if (stmt2 != null)	{ try {	stmt2.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 			
