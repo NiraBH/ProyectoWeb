@@ -1,18 +1,18 @@
-package Servicios;
+package servicios;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.SintomasDAO;
-import DTO.SintomaDTO;
+import dao.SintomasDAO;
+import dto.SintomasDTO;
 
 
 public class SintomasService {
 
-	public List<SintomaDTO>  buscarSintomasPorInicial (String inicial) throws SQLException
+	public List<SintomasDTO>  buscarSintomasPorInicial (String inicial) throws SQLException
 	{
-		List<SintomaDTO> lista_sintomas= null;
+		List<SintomasDTO> lista_sintomas= null;
 		
 		lista_sintomas = SintomasDAO.getSintomasPorInicial(inicial);
 		

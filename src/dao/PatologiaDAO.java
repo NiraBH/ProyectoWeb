@@ -1,8 +1,9 @@
-package DAO;
+package dao;
 
-import DTO.PatologiaDTO;
-import DTO.SintomaDTO;
-import Servicios.Consultas;
+import dto.PatologiasDTO;
+import dto.SintomasDTO;
+import servicios.Consultas;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +21,9 @@ public class PatologiaDAO {
 	
 	private final static Logger log = Logger.getLogger("mylog");
 	
-	public PatologiaDTO buscarPorId (int id)
+	public PatologiasDTO buscarPorId (int id)
 	{
-		PatologiaDTO pdto = null;
+		PatologiasDTO pdto = null;
 		Pool pool = null;	
 		pool = Pool.getInstance();
 		Connection con = Pool.getConnection();
@@ -33,7 +34,7 @@ public class PatologiaDAO {
 			rs = st.executeQuery(Consultas.CONSULTA_PATOLOGIAS_POR_ID+id);
 			while (rs.next())
 		    {
-				pdto = new PatologiaDTO(rs.getInt(1), rs.getNString(2), rs.getString(5), rs.getString(4), rs.getNString(3), getSintomasPorPatologiaID(con, rs.getInt(1)));
+				pdto = new PatologiasDTO(rs.getInt(1), rs.getNString(2), rs.getString(5), rs.getString(4), rs.getNString(3), getSintomasPorPatologiaID(con, rs.getInt(1)));
 				
 			}
 			
@@ -55,13 +56,13 @@ public class PatologiaDAO {
 	}
 	
 	
-	public static List<SintomaDTO> getSintomasPorPatologiaID (Connection conn, int id) throws SQLException
+	public static List<SintomasDTO> getSintomasPorPatologiaID (Connection conn, int id) throws SQLException
 	{
-		List<SintomaDTO> lista_sintomas = new ArrayList<SintomaDTO>();
+		List<SintomasDTO> lista_sintomas = new ArrayList<SintomasDTO>();
 			 
 			String descripcion_sintoma = null;
 			int id_sintoma = 0;
-			SintomaDTO sintoma = null;
+			SintomasDTO sintoma = null;
 			ResultSet rset2 = null;
 			Statement stmt2 = null;
 			stmt2 = conn.createStatement();
@@ -70,7 +71,7 @@ public class PatologiaDAO {
 		    {
 				id_sintoma = rset2.getInt(1);
 				descripcion_sintoma = rset2.getString(2);
-				sintoma = new SintomaDTO(id_sintoma, descripcion_sintoma);
+				sintoma = new SintomasDTO(id_sintoma, descripcion_sintoma);
 				lista_sintomas.add(sintoma);
 			}
 			

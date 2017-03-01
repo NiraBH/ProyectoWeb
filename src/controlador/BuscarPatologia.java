@@ -1,4 +1,4 @@
-package Controlador;
+package controlador;
 
 
 import java.io.IOException;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.PatologiaDTO;
-import Servicios.PatologiaService;
+import dto.PatologiasDTO;
+import servicios.PatologiaServiceN;
 
 /**
  * Servlet implementation class BuscarPatologia
@@ -32,13 +32,13 @@ public class BuscarPatologia extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		PatologiaService ps = new PatologiaService();
+		PatologiaServiceN ps = new PatologiaServiceN();
 		long time_start, time_end;
 		time_start = System.currentTimeMillis();
 		String str_id = request.getParameter("id");
 		int id = Integer.parseInt(str_id);
 		
-		PatologiaDTO patoDto = ps.buscarPatologiaPorID(id);
+		PatologiasDTO patoDto = ps.buscarPatologiaPorID(id);
 		//PrintWriter pw = response.getWriter().append(patoDto.getNombre()+ ": " + patoDto.getDescripcion());
 	
 		time_end = System.currentTimeMillis();

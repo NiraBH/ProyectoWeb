@@ -1,4 +1,4 @@
-package Controlador;
+package controlador;
 
 
 
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import DTO.SintomaDTO;
-import Servicios.SintomasService;
+import dto.SintomasDTO;
+import servicios.SintomasService;
 
 
 /**
@@ -45,7 +45,7 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String inicial = request.getParameter("intro");
 		SintomasService ss = new SintomasService();
-		List<SintomaDTO> lista_sintomas = null;
+		List<SintomasDTO> lista_sintomas = null;
 		try {
 			lista_sintomas = ss.buscarSintomasPorInicial(inicial);
 		} catch (SQLException e) {
@@ -59,7 +59,7 @@ public class BuscarSintomasPorInicial extends HttpServlet {
 		}
 		*/
 		Gson gson = new Gson();
-		Type tipoListaSintomas = new TypeToken<List<SintomaDTO>>(){}.getType();
+		Type tipoListaSintomas = new TypeToken<List<SintomasDTO>>(){}.getType();
 		String s = gson.toJson(lista_sintomas, tipoListaSintomas);
 		
 		response.setCharacterEncoding("UTF-8");
